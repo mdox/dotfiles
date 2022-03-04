@@ -1,0 +1,4 @@
+#!/bin/sh
+
+pidof -q dwmblocks && pkill -RTMIN+$1 dwmblocks
+

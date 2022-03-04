@@ -1,0 +1,15 @@
+#!/bin/sh -e
+
+dir=${XDG_DOCUMENTS_DIR:-"$HOME"/Documents}/ideas
+
+mkdir -p "$dir"
+
+name=$(date "+%F_%T" | tr ':' '-')
+file="$dir/$name"
+
+if [ -t 1 ] && [ ! -p /dev/stdout ]; then
+	vim "$file"
+else
+	st -e vim "$file"
+fi
+

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ -t 1 ] && [ ! -p /dev/stdout ]; then
+	$@
+else
+    st -e $@
+fi
+

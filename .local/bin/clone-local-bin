@@ -1,0 +1,12 @@
+#!/bin/sh
+
+[ -z "$1" ] && echo "No file for copy." && exit 1
+[ -z "$2" ] && echo "No file for name." && exit 2
+
+src="$HOME/.local/bin/$1"
+dst="$HOME/.local/bin/$2"
+
+cp "$src" "$dst"
+
+[ ! -z "$3" ] && $3 "$dst"
+

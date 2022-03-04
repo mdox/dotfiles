@@ -1,0 +1,10 @@
+#!/bin/sh
+
+kb=$(x-kblayout)
+
+x-kblayout "us"
+
+slock
+
+x-kblayout "$kb"
+

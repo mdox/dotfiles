@@ -1,0 +1,37 @@
+#!/bin/sh -e
+
+updatelist=$(mktemp -d)
+
+trap "cleanup" EXIT
+
+cleanup() {
+	rm -rf "$updatelist"
+}
+
+searchdir="$HOME/git/update/"
+
+[ -z "$(dir -1 "$searchdir")" ] && echo "Nothing check for update." && exit 0
+
+for link in "$searchdir"*; do
+	pkgdir="$(realpath "$link")"
+	cd "$pkgdir"
+	git remote update >/dev/null 2>&1
+	LOCAL="$(git rev-parse @)"
+	REMOTE="$(git rev-parse @{u})"
+	[ $LOCAL = $REMOTE ] && continue
+	ln -s "$pkgdir" "$updatelist"
+done
+
+[ -z "$(dir -1 "$updatelist")" ] && echo "Everything is up to date." && exit 0
+
+echo "Update List: "
+ls -1 "$updatelist"
+
+for link in "$updatelist/"*; do
+	pkgdir="$(realpath "$link")"
+	cd "$pkgdir"
+	pwd
+	git pull --rebase
+	makepkg -sic
+done
+

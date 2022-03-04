@@ -1,0 +1,15 @@
+#!/bin/sh
+
+kb="$(setxkbmap -query | grep -oP 'layout:\s*\K\w+')"
+
+[ -z "$1" ] && echo "$kb" && exit 0
+
+case $1 in
+    toggle) [ "$kb" = "us" ] && setxkbmap "hu" || setxkbmap "us" ;;
+	*) [ "$1" = "$kb" ] && exit 0 ; setxkbmap "$1" ;;
+esac
+
+x-remaps
+
+x-dwmblocks-signal 1
+

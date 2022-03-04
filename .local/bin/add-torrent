@@ -1,0 +1,6 @@
+#!/bin/sh
+
+test ! pidof -q transmission-daemon && transmission-daemon && sleep 1s
+
+transmission-remote -w /data/Torrents/Data -a "$@" && notify-send "Torrent has been added: $@"
+

@@ -1,0 +1,14 @@
+[Default Applications]
+x-scheme-handler/mailto=userapp-Thunderbird-ZYZFE1.desktop
+message/rfc822=userapp-Thunderbird-ZYZFE1.desktop
+x-scheme-handler/mid=userapp-Thunderbird-ZYZFE1.desktop
+text/html=x-www-browser.desktop
+x-scheme-handler/http=x-www-browser.desktop
+x-scheme-handler/https=x-www-browser.desktop
+x-scheme-handler/about=x-www-browser.desktop
+x-scheme-handler/unknown=x-www-browser.desktop
+
+[Added Associations]
+x-scheme-handler/mailto=userapp-Thunderbird-ZYZFE1.desktop;
+x-scheme-handler/mid=userapp-Thunderbird-ZYZFE1.desktop;
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop;

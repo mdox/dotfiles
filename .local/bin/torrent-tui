@@ -1,0 +1,6 @@
+#!/bin/sh
+
+[ ! "$(pidof -q transmission-daemon)"] && transmission-daemon
+
+terminal-shell tremc
+

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+export $(dbus-launch)
+
+# dbus-run-session
+# flatpak run 
+com.mojang.Minecraft
+

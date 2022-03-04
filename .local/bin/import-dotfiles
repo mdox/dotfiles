@@ -1,0 +1,30 @@
+#!/bin/sh
+
+dest=$HOME/Dotfiles
+
+filter=$(mktemp)
+cat <<EOF > "$filter"
++ .config/user-dirs.dirs
++ .config/mimeapps.list
++ .config/sxhkd
++ .config/vifm/vifmrc
++ .config/vifm/colors
++ .config/vifm/scripts
+- .config/vifm/*
++ .config/fontconfig
+- .config/*
+- .local/share
+EOF
+
+rsync -acP --delete --filter="merge $filter" \
+"$HOME/.config" \
+"$HOME/.local" \
+"$HOME/.vimrc" \
+"$HOME/.Xmodmap" \
+"$HOME/.xinitrc" \
+"$HOME/.bashrc" \
+"$HOME/.profilerc" \
+"$HOME/.bash_profile" \
+"$HOME/.aliasrc" \
+"$dest"
+

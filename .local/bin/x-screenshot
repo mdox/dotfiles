@@ -1,0 +1,36 @@
+#!/bin/sh
+
+export dir=${XDG_PICTURES_DIR:-"$HOME/Pictures"}/screenshots
+
+mkdir -p "$dir"
+
+export name=$(date '+%Y-%m-%d_%H-%M-%S').png
+
+export clip=0
+export select=0
+
+for arg in $@; do
+	case "$arg" in
+		clip) clip=1 ;;
+		select) select=1 ;;
+	esac
+done
+
+e() {
+	[ -f "$1" ] || exit 0
+
+	mv "$1" "$dir"
+
+	[ $clip -eq 1 ] && xclip -selection clipboard \
+		-t $(file -b --mime-type "$dir/$1") \
+		-i "$dir/$name"
+}
+
+export -f e
+
+s() {
+	scrot "$name" -z -e 'e $f' $@
+}
+
+[ $select -eq 1 ] && s -s || s
+

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+alias suckless-i='sudo make install'
+alias suckless-c='make clean && rm -f config.h'
+alias suckless-ic='suckless-i && suckless-c'
+alias suckless-cic='suckless-c && suckless-i && suckless-c'
+alias dwmblocks-i='sudo make install'
+alias dwmblocks-c='make clean && rm -f blocks.h'
+alias dwmblocks-ic='dwmblocks-i && dwmblocks-c'
+alias dwmblocks-cic='dwmblocks-c && dwmblocks-i && dwmblocks-c'
+alias sxiv='sxiv -p'
+alias yt='youtube-dl --add-metadata -i'
+alias yta='yt -x -f bestaudio/best'
+# alias mwg='st -e monero-wallet-gui'
+# alias kpx='st -e keepassxc'
+

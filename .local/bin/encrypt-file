@@ -1,0 +1,11 @@
+#!/bin/sh
+
+src="$1"
+who="$2"
+
+if [ -z "$who" ]; then
+	gpg -e "$src"
+else
+	gpg -r "$who" -e "$src"
+fi
+

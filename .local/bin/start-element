@@ -1,0 +1,6 @@
+#!/bin/sh
+
+export $(dbus-launch)
+
+flatpak run im.riot.Riot
+

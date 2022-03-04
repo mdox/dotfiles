@@ -1,0 +1,8 @@
+#!/bin/sh
+
+usermodmap=$HOME/.Xmodmap
+sysmodmap=/etc/X11/xinit/.Xmodmap
+
+[ -f "$sysmodmap" ] && xmodmap "$sysmodmap"
+[ -f "$usermodmap" ] && xmodmap "$usermodmap"
+

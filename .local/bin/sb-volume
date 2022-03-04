@@ -1,0 +1,23 @@
+#!/bin/sh
+
+volume="$(pamixer --get-volume)"
+[ $volume -gt 100 ] && volume=100
+[ $volume -lt 0 ] && volume=0
+
+volumespace=""
+[ $volume -lt 100 ] && volumespace=" "
+[ $volume -lt 10 ] && volumespace="  "
+
+mute="▁▔▁▔▁▔▁▔"
+
+pamixer --get-mute > /dev/null && echo "$mute $volumespace$volume%" && exit 0
+
+levels="▁▂▃▄▅▆▇█"
+levelsc=${#levels}
+index=$(((levelsc*volume+levelsc*10)/100))
+indicator=${levels:0:$index}
+indicatorspace=""
+[ $index -ne $levelsc ] && indicatorspace=$(printf " %.0s" $(seq 1 $((levelsc-index))))
+
+echo "$indicator$indicatorspace $volumespace$volume%"
+

@@ -1,0 +1,12 @@
+#!/bin/sh
+
+sum=0
+count=0
+
+for temp in $(cat /sys/class/thermal/thermal_zone*/temp); do
+	count=$((count+1))
+	sum=$((sum+temp))
+done
+
+echo "$((sum/1000/count))°"
+

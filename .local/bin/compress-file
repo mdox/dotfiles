@@ -1,0 +1,9 @@
+#!/bin/sh
+
+src="$1"
+dst="${2:-"$(basename "$1").tar.gz"}"
+
+[ -e "$dst" ] && echo "Entity is already exists for given destination: $dst" && exit 1
+
+tar -cvzf "$dst" "$src"
+

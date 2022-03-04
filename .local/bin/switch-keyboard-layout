@@ -1,0 +1,6 @@
+#!/bin/sh
+
+x-kblayout toggle
+x-dwmblocks-signal 1
+remaps
+

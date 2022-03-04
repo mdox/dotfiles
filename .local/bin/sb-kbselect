@@ -1,0 +1,8 @@
+#!/bin/sh
+
+kb="$(setxkbmap -query | grep -oP 'layout:\s*\K\w+')" || exit 1
+
+[ "$kb" = "us" ] && exit 0
+
+printf "%s" "$kb"
+

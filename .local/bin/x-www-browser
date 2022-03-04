@@ -1,0 +1,26 @@
+#!/bin/sh
+
+profile="$(\
+	cat <<- EOF | dmenu -i -l 10
+	Main
+	Bill
+	Design
+	Media
+	Social
+	Order
+	Wise
+	Admin
+EOF
+)"
+
+case "$profile" in
+	"Main")		brave --profile-directory="Default" "$@"	;;
+	"Bill")		brave --profile-directory="Profile 2" "$@"	;;
+	"Design")	brave --profile-directory="Profile 1" "$@"	;;
+	"Media")	brave --profile-directory="Profile 4" "$@"	;;
+	"Social")	brave --profile-directory="Profile 5" "$@"	;;
+	"Order")	brave --profile-directory="Profile 6" "$@"	;;
+	"Wise")		brave --profile-directory="Profile 7" "$@"	;;
+	"Admin")	brave --profile-directory="Profile 3" "$@"	;;
+esac
+

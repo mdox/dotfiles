@@ -1,0 +1,9 @@
+#!/bin/sh -e
+
+logdir="$HOME/log-startx"
+logfile="$logdir/log-startx__$(date +%FT%T | tr ':' '-').log"
+
+mkdir -p "$logdir"
+
+startx > "$logfile" 2>&1
+
